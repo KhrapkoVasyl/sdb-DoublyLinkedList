@@ -12,3 +12,8 @@ class Node {
     this.value = value;
   }
 }
+
+class List {
+  #head = null;
+  #tail = null;
+}
