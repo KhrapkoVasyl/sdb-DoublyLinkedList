@@ -16,4 +16,15 @@ class Node {
 class List {
   #head = null;
   #tail = null;
+
+  length() {
+    let length = 0;
+    let curr = this.#head;
+    while (curr) {
+      length++;
+      curr = curr.next;
+    }
+
+    return length;
+  }
 }
