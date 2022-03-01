@@ -398,3 +398,31 @@ describe('Testing the .clone() method', () => {
     expect(copy.length()).toBe(0);
   });
 });
+
+describe('Testing the .reverse() method', () => {
+  test('Should reorder the nodes of a list of five items backwards', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    list.append('d');
+    list.append('e');
+
+    list.reverse();
+
+    expect(list.length()).toBe(5);
+    expect(list.get(0)).toBe('e');
+    expect(list.get(1)).toBe('d');
+    expect(list.get(2)).toBe('c');
+    expect(list.get(3)).toBe('b');
+    expect(list.get(4)).toBe('a');
+  });
+
+  test('Should reverse an empty list without error', () => {
+    const list = new List();
+
+    list.reverse();
+
+    expect(list.length()).toBe(0);
+  });
+});
