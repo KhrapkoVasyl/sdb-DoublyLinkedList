@@ -91,4 +91,15 @@ class List {
     }
     return newList;
   }
+
+  reverse() {
+    const reversedList = new List();
+    let curr = this.#tail;
+    while (curr) {
+      reversedList.append(curr.value);
+      curr = curr.previous;
+    }
+    this.#head = reversedList.#head;
+    this.#tail = reversedList.#tail;
+  }
 }
