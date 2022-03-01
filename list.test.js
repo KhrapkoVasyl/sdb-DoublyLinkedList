@@ -50,3 +50,40 @@ describe('Testing the .append() method', () => {
     expect(list.get(1)).toBe('2');
   });
 });
+
+describe('Testing the .get() method', () => {
+  test('Should return the element in the list at index 2', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    list.append('d');
+    list.append('e');
+
+    expect(list.get(2)).toBe('c');
+  });
+
+  test('Should throw an error when trying to get an element with a negative index', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    expect(() => list.get(-1)).toThrow('Wrong position specified');
+  });
+
+  test('Should throw an error when trying to get the element at index zero from an empty list', () => {
+    const list = new List();
+
+    expect(() => list.get(0)).toThrow('Wrong position specified');
+  });
+
+  test('Should throw an error when trying to get an element with an index greater than the length of the list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    expect(() => list.get(5)).toThrow('Wrong position specified');
+  });
+});
