@@ -77,4 +77,8 @@ class List {
     next.previous = newNode;
     newNode.next = next;
   }
+
+  get(index) {
+    return this.#getNode(index).value;
+  }
 }
