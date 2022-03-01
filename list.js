@@ -112,4 +112,14 @@ class List {
     }
     return -1;
   }
+
+  findLast(element) {
+    const length = this.length();
+    let curr = this.#tail;
+    for (let i = length - 1; i >= 0; i--) {
+      if (curr.value === element) return i;
+      curr = curr.previous;
+    }
+    return -1;
+  }
 }
