@@ -81,4 +81,14 @@ class List {
   get(index) {
     return this.#getNode(index).value;
   }
+
+  clone() {
+    const newList = new List();
+    let curr = this.#head;
+    while (curr) {
+      newList.append(curr.value);
+      curr = curr.next;
+    }
+    return newList;
+  }
 }
