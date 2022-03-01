@@ -102,4 +102,14 @@ class List {
     this.#head = reversedList.#head;
     this.#tail = reversedList.#tail;
   }
+
+  findFirst(element) {
+    const length = this.length();
+    let curr = this.#head;
+    for (let i = 0; i < length; i++) {
+      if (curr.value === element) return i;
+      curr = curr.next;
+    }
+    return -1;
+  }
 }
