@@ -149,3 +149,25 @@ describe('Testing the .insert() method', () => {
     expect(() => list.insert('1', 5)).toThrow('Wrong position specified');
   });
 });
+
+describe('Testing the .findFirst() method', () => {
+  test('Should return position of the first node with value equal to "1"', () => {
+    const list = new List();
+    list.append('0');
+    list.append('1');
+    list.append('2');
+    list.append('1');
+
+    expect(list.findFirst('1')).toBe(1);
+  });
+
+  test('Should return -1 for a given value that is not contained in the nodes of the list', () => {
+    const list = new List();
+    list.append('0');
+    list.append('1');
+    list.append('2');
+    list.append('1');
+
+    expect(list.findFirst('@')).toBe(-1);
+  });
+});
