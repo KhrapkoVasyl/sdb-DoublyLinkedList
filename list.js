@@ -145,4 +145,26 @@ class List {
     listToAdd.#head.previous = this.#tail;
     this.#tail = listToAdd.#tail;
   }
+
+  delete(index) {
+    const node = this.#getNode(index);
+    const value = node.value;
+    const length = this.length();
+    if (length === 1) {
+      this.clear();
+    } else if (index === 0) {
+      this.#head = node.next;
+      this.#head.previous = null;
+    } else if (index === length - 1) {
+      this.#tail = node.previous;
+      this.#tail.next = null;
+    } else {
+      const next = node.next;
+      const prev = node.previous;
+
+      next.previous = prev;
+      prev.next = next;
+    }
+    return value;
+  }
 }
