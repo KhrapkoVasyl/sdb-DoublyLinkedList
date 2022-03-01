@@ -207,3 +207,83 @@ describe('Testing the .clear() method', () => {
     expect(list.length()).toBe(0);
   });
 });
+
+describe('Testing the .delete() method', () => {
+  test('Should clear the list, when trying to remove the only element in the list, and return the value of that element', () => {
+    const list = new List();
+    list.append('a');
+
+    const removedValue = list.delete(0);
+
+    expect(list.length()).toBe(0);
+    expect(removedValue).toBe('a');
+  });
+
+  test('Should delete the element with index 0 of the list and get its value (in a list of 3 elements). The rest of the elements should move forward by one index', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    const removedValue = list.delete(0);
+
+    expect(list.length()).toBe(2);
+    expect(removedValue).toBe('a');
+    expect(list.get(0)).toBe('b');
+    expect(list.get(1)).toBe('c');
+  });
+
+  test('Should delete the last element of the list and get its value.', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    const removedValue = list.delete(2);
+
+    expect(list.length()).toBe(2);
+    expect(removedValue).toBe('c');
+  });
+
+  test('Should delete the element in the middle of the list (element at index 2). Elements after the removed node must move forward by one index.', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    list.append('d');
+    list.append('e');
+
+    const removedValue = list.delete(2);
+
+    expect(list.length()).toBe(4);
+    expect(removedValue).toBe('c');
+    expect(list.get(0)).toBe('a');
+    expect(list.get(1)).toBe('b');
+    expect(list.get(2)).toBe('d');
+    expect(list.get(3)).toBe('e');
+  });
+
+  test('Should throw an error when trying to delete a node at negative index in a list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    expect(() => list.delete(-1)).toThrow('Wrong position specified');
+  });
+
+  test('Should throw an error when trying to delete a node in an empty list', () => {
+    const list = new List();
+
+    expect(() => list.delete(0)).toThrow('Wrong position specified');
+  });
+
+  test('Should throw an error when trying to delete a node at index greater than list length', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    expect(() => list.delete(5)).toThrow('Wrong position specified');
+  });
+});
