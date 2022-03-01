@@ -127,4 +127,22 @@ class List {
     this.#head = null;
     this.#tail = null;
   }
+
+  extend(elements) {
+    if (!(elements instanceof List))
+      throw new Error(
+        'The expected object must be an instance of the List class'
+      );
+    if (!elements.#head) return;
+    const listToAdd = elements.clone();
+
+    if (this.length() === 0) {
+      this.#head = listToAdd.#head;
+      this.#tail = listToAdd.#tail;
+      return;
+    }
+    this.#tail.next = listToAdd.#head;
+    listToAdd.#head.previous = this.#tail;
+    this.#tail = listToAdd.#tail;
+  }
 }
