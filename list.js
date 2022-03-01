@@ -39,4 +39,17 @@ class List {
     this.#tail.next = newNode;
     this.#tail = newNode;
   }
+
+  #isPosCorrect(pos) {
+    return pos >= 0 && pos < this.length();
+  }
+
+  #getNode(pos) {
+    if (!this.#isPosCorrect(pos)) throw new Error('Wrong position specified');
+    let curr = this.#head;
+    for (let i = 0; i <= pos; i++) {
+      if (i === pos) return curr;
+      curr = curr.next;
+    }
+  }
 }
