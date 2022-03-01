@@ -167,4 +167,18 @@ class List {
     }
     return value;
   }
+
+  deleteAll(element) {
+    let curr = this.#head;
+    let index = 0;
+    while (curr) {
+      if (curr.value === element) {
+        this.delete(index);
+        index--;
+      }
+      console.log(curr);
+      curr = curr.next;
+      index++;
+    }
+  }
 }
