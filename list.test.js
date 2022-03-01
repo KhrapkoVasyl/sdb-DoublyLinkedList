@@ -287,3 +287,63 @@ describe('Testing the .delete() method', () => {
     expect(() => list.delete(5)).toThrow('Wrong position specified');
   });
 });
+
+describe('Testing the .deleteAll() method', () => {
+  test('Should delete all nodes with value equal to "a" in list with seven nodes', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    list.append('c');
+    list.append('b');
+    list.append('a');
+    list.append('a');
+
+    list.deleteAll('a');
+
+    expect(list.length()).toBe(4);
+    expect(list.get(0)).toBe('b');
+    expect(list.get(1)).toBe('c');
+    expect(list.get(2)).toBe('c');
+    expect(list.get(3)).toBe('b');
+  });
+
+  test('Should delete the only element in the list without error', () => {
+    const list = new List();
+    list.append('a');
+
+    list.deleteAll('a');
+
+    expect(list.length()).toBe(0);
+  });
+
+  test('Should not delete nodes if the given value is not in any node of the list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    list.append('c');
+    list.append('b');
+    list.append('a');
+    list.append('a');
+
+    list.deleteAll('1');
+
+    expect(list.length()).toBe(7);
+  });
+
+  test('Should completely clear the list of nodes, each of which matches the given value', () => {
+    const list = new List();
+    list.append('a');
+    list.append('a');
+    list.append('a');
+    list.append('a');
+    list.append('a');
+    list.append('a');
+    list.append('a');
+
+    list.deleteAll('a');
+
+    expect(list.length()).toBe(0);
+  });
+});
