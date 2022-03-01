@@ -52,4 +52,29 @@ class List {
       curr = curr.next;
     }
   }
+
+  insert(element, index) {
+    const length = this.length();
+    const isIndexEqualToZero = index === 0;
+    if ((isIndexEqualToZero && !length) || index === length) {
+      this.append(element);
+      return;
+    }
+    if (!this.#isPosCorrect(index)) throw new Error('Wrong position specified');
+    const newNode = new Node(element);
+    if (isIndexEqualToZero) {
+      this.#head.previous = newNode;
+      newNode.next = this.#head;
+      this.#head = newNode;
+      return;
+    }
+    const next = this.#getNode(index);
+    const prev = next.previous;
+
+    prev.next = newNode;
+    newNode.previous = prev;
+
+    next.previous = newNode;
+    newNode.next = next;
+  }
 }
