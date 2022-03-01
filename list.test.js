@@ -171,3 +171,25 @@ describe('Testing the .findFirst() method', () => {
     expect(list.findFirst('@')).toBe(-1);
   });
 });
+
+describe('Testing the .findLast() method', () => {
+  test('Should return position of the last node with value equal to "1"', () => {
+    const list = new List();
+    list.append('0');
+    list.append('1');
+    list.append('2');
+    list.append('1');
+
+    expect(list.findLast('1')).toBe(3);
+  });
+
+  test('Should return -1 for a given value that is not contained in the nodes of the list', () => {
+    const list = new List();
+    list.append('0');
+    list.append('1');
+    list.append('2');
+    list.append('1');
+
+    expect(list.findLast('@')).toBe(-1);
+  });
+});
