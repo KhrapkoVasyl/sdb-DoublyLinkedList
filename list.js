@@ -122,4 +122,9 @@ class List {
     }
     return -1;
   }
+
+  clear() {
+    this.#head = null;
+    this.#tail = null;
+  }
 }
