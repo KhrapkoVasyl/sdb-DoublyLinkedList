@@ -193,3 +193,17 @@ describe('Testing the .findLast() method', () => {
     expect(list.findLast('@')).toBe(-1);
   });
 });
+
+describe('Testing the .clear() method', () => {
+  test('Should clear all list items', () => {
+    const list = new List();
+    list.append('0');
+    list.append('1');
+    list.append('2');
+    list.append('1');
+
+    list.clear();
+
+    expect(list.length()).toBe(0);
+  });
+});
