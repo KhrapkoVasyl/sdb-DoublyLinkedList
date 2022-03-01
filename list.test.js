@@ -426,3 +426,105 @@ describe('Testing the .reverse() method', () => {
     expect(list.length()).toBe(0);
   });
 });
+
+describe('Testing the .extend() method', () => {
+  test('Should extend the list of 3 nodes by adding the elements of the specified in the parameters list of 3 nodes to the end of the original list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    const secondList = new List();
+    secondList.append('d');
+    secondList.append('e');
+    secondList.append('f');
+
+    list.extend(secondList);
+
+    expect(list.length()).toBe(6);
+    expect(list.get(0)).toBe('a');
+    expect(list.get(1)).toBe('b');
+    expect(list.get(2)).toBe('c');
+    expect(list.get(3)).toBe('d');
+    expect(list.get(4)).toBe('e');
+    expect(list.get(5)).toBe('f');
+  });
+
+  test('Should extend the list with elements of second list, and after that, changes in the second list should not affect the extended list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    const secondList = new List();
+    secondList.append('d');
+    secondList.append('e');
+    secondList.append('f');
+    list.extend(secondList);
+
+    secondList.delete(0);
+    secondList.delete(1);
+
+    expect(list.length()).toBe(6);
+    expect(list.get(3)).toBe('d');
+    expect(list.get(4)).toBe('e');
+    expect(list.get(5)).toBe('f');
+  });
+
+  test('Should extend an empty list with a second non-empty list', () => {
+    const list = new List();
+    const secondList = new List();
+    secondList.append('d');
+    secondList.append('e');
+    secondList.append('f');
+
+    list.extend(secondList);
+
+    expect(list.length()).toBe(3);
+    expect(list.get(0)).toBe('d');
+    expect(list.get(1)).toBe('e');
+    expect(list.get(2)).toBe('f');
+  });
+
+  test('Should extend a non-empty list with a second empty list without error and without changing the original list', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+    const secondList = new List();
+
+    list.extend(secondList);
+
+    expect(list.length()).toBe(3);
+    expect(list.get(0)).toBe('a');
+    expect(list.get(1)).toBe('b');
+    expect(list.get(2)).toBe('c');
+  });
+
+  test('When trying to extend an empty list with a second empty list, it should not throw an error, and change the original list', () => {
+    const list = new List();
+    const secondList = new List();
+
+    list.extend(secondList);
+
+    expect(list.length()).toBe(0);
+  });
+
+  test('Should throw an error when trying to pass a non-instance of the List class as a parameter to the .extend() method', () => {
+    const list = new List();
+    list.append('a');
+    list.append('b');
+    list.append('c');
+
+    expect(() => list.extend(5)).toThrow(
+      'The expected object must be an instance of the List class'
+    );
+    expect(() => list.extend(null)).toThrow(
+      'The expected object must be an instance of the List class'
+    );
+    expect(() => list.extend({})).toThrow(
+      'The expected object must be an instance of the List class'
+    );
+    expect(() => list.extend('some string')).toThrow(
+      'The expected object must be an instance of the List class'
+    );
+  });
+});
