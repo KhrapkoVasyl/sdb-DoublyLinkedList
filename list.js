@@ -176,7 +176,6 @@ class List {
         this.delete(index);
         index--;
       }
-      console.log(curr);
       curr = curr.next;
       index++;
     }
