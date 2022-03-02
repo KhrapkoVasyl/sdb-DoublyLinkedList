@@ -18,7 +18,7 @@ class List {
   #tail = null;
 
   length() {
-    let length = 0;
+    let length = 1;
     let curr = this.#head;
     while (curr) {
       length++;
