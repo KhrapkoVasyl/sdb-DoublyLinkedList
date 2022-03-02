@@ -186,54 +186,61 @@ module.exports = List;
 
 // demonstration of the use of the List class, and its methods
 
+const messageСolor = '\x1b[36m';
+const resultColor = '\x1b[33m';
+
 const list = new List();
 list.append('a');
 list.insert('b', 1);
-console.log('\x1b[36m' + 'List lenght: ' + '\x1b[33m' + list.length());
-console.log('\x1b[36m' + 'Element with index 1: ' + '\x1b[33m' + list.get(1));
+console.log(messageСolor + 'List lenght: ' + resultColor + list.length());
+console.log(
+  messageСolor + 'Element with index 1: ' + resultColor + list.get(1)
+);
 listClone = list.clone();
 listClone.append('a');
 listClone.append('c');
 listClone.reverse();
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'Index of first element with value "1" in reversed list: ' +
-    '\x1b[33m' +
+    resultColor +
     listClone.findFirst('a')
 );
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'Index of last element with value "1" in reversed list: ' +
-    '\x1b[33m' +
+    resultColor +
     listClone.findLast('a')
 );
 const deletedValue = listClone.delete(0);
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'Length of listClone after deleting an element with index 0: ' +
-    '\x1b[33m' +
+    resultColor +
     listClone.length()
 );
-console.log('\x1b[36m' + 'Deleted element value: ' + '\x1b[33m' + deletedValue);
+console.log(
+  messageСolor + 'Deleted element value: ' + resultColor + deletedValue
+);
 list.extend(listClone);
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'The length of the original list after extending with the second list listClone: ' +
-    '\x1b[33m' +
+    resultColor +
     list.length()
 );
 list.deleteAll('a');
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'The length of the list after removing all elements with value 1: ' +
-    '\x1b[33m' +
+    resultColor +
     list.length()
 );
 list.clear();
 console.log(
-  '\x1b[36m' +
+  messageСolor +
     'The length of the list after clearing: ' +
-    '\x1b[33m' +
+    resultColor +
     list.length()
 );
 
