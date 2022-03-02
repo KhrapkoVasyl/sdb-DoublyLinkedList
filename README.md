@@ -29,7 +29,7 @@ Lab work №2 on software development methodologies.
 
 `0427 % 2 = 1`
 
-Remainder of division = 1, so my variant - **[doubly linked list](#task_description_by_my_variant)**
+Remainder of division = 1, so my variant - [doubly linked list](#task-description-by-my-variant)
 
 ## Task description by my variant
 
