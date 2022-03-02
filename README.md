@@ -111,7 +111,7 @@ The list has available methods:
 
 ## Installation
 
-Make sure you have [Node.js](http://nodejs.org/) installed.
+Make sure you have [Node.js](http://nodejs.org/) installed. The program requires Node 14.x and newer versions to work correctly.
 
 1. Clone the repo:
    ```sh
